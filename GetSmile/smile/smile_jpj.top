@@ -1,0 +1,27 @@
+topic: ~smile()
+language: jpj
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+
+concept:(yes) [はい お願い そうだね やってみよう いいね]
+concept:(no) [いいえ いいです またこんど]
+
+u: (e:onStart) こんにちは。ところで笑顔チェックしませんか？
+  u1: (~yes) 
+    ^start(animations/Stand/Emotions/Positive/Happy_4)
+    オッケエ
+    ^wait(animations/Stand/Emotions/Positive/Happy_4)
+    \vct=110\じゃあ僕に向かってえ \pau=00\ \vct=170\ 笑顔 \vct=110\
+    $onCheckSmile=1
+  u1: (~no) そうですかあ。何か用事があったら呼んでね！
+  
+u:(e:smilecheck/goodsmile) いい笑顔です！その調子で！
+　$onStopped=1
+u:(e:smilecheck/badsmile) もっと笑って！

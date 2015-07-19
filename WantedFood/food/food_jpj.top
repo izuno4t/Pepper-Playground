@@ -1,0 +1,18 @@
+topic: ~food()
+language: jpj
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+
+u:(_[ラーメン チャーハン カレー パン]食べたい)
+　　　$1 ですね。ありがとございます。$wantedFood=$1
+
+u:($wantedFood食べたい)
+    ラーメンですね。ありがとございます。$wantedFood = ラーメン
+u:(さっき頼んだやつまだ？) $wantedFood ですね。今作ってます。

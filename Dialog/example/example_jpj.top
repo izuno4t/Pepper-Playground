@@ -1,0 +1,46 @@
+topic: ~example()
+language: jpj
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+
+# u:(鏡よ鏡、世界で一番美しいのは)そなたじゃ
+
+# u:({*}世界 {*} 強い{*})そなたじゃ
+
+# u:({*}世界{*}[美しい きれい かわいい]{*}) そなたじゃ
+# u:({*}世界{*}[強い こわい]{*}) ゴジラかなぁ？
+
+# u:({*}世界{*}美しい{*})[そなた クレオパトラ 楊貴妃]じゃ
+
+concept:(beautiful) [美しい 綺麗 きれい かわいい いけてる]
+# u:({*}世界{*} ~beautiful {*}) そなたじゃ
+
+u:(e:Dialog/NotUnderstood)えっ？なんじゃ？もう一回。
+
+u:(こんにちは)
+  ^start(animations/Stand/Gestures/Hey_2)
+  \vct=170\ こんにちは。はじめまして！\vct=10\\pau=500\ペッパーです。\vct=100\
+  ^wait(animations/Stand/Gestures/Hey_2)
+
+
+u: (こんにちは) こんにちは。ところでペット飼っていますか？
+  u1: ([はい 飼ってる]) そうですか、飼っているペットは、犬、猫、それ以外？
+    u2: (犬 {*}) わんわん。犬って賢いですよね！
+      u3: (そうでもないよ) えー！！
+    u2: (猫 {*}) ニャアニャア。猫ってかわいいですよね！
+    u2: (それ以外{*})  どんなペットですか？興味あります！
+  u1: ([いいえ 飼ってない]) そうですか。ぜひペッパーを置いてください
+
+
+
+
+
+
+
